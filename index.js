@@ -11,7 +11,7 @@ const mapAnnotationsByMs = (tracks, videoLengthInMs) => {
     annotationsByMsHashMap[i] = { visible: [], hidden: [] }
     for (let j = 0; j < tracks.length; j++) {
       tracks[j].forEach(annotation => {
-        if (convertTimestampToMs(annotation.startTime) <= i && convertTimestampToMs(annotation.endTime) <= i) {
+        if (convertTimestampToMs(annotation.startTime) <= i && convertTimestampToMs(annotation.endTime) >= i) {
           annotationsByMsHashMap[i].visible.push(annotation)
         } else {
           annotationsByMsHashMap[i].hidden.push(annotation)
@@ -19,6 +19,7 @@ const mapAnnotationsByMs = (tracks, videoLengthInMs) => {
       })
     }
   }
+  console.log('annotationsByMsHashMap', annotationsByMsHashMap)
 }
 
 // this method gets called in timeUpdate
