@@ -23,7 +23,7 @@ const mapAnnotationsByMs = (tracks, videoLengthInMs) => {
 }
 
 // this method gets called in timeUpdate
-const setAnnotations = (currentTimeInSec) => {
+const setAnnotations = currentTimeInSec => {
   annotationsByMsHashMap[currentTimeInSec * 1000].visible.forEach(annotation => annotation.show())
   annotationsByMsHashMap[currentTimeInSec * 1000].hidden.forEach(annotation => annotation.hide())
 }
